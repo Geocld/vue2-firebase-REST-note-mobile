@@ -2,8 +2,12 @@
   <section class="page-home">
     <page-header :center_text="'Vue2'"></page-header>
 
-    <section class="card-list">
-      <note-card v-for="item in 3" @delete-action="deleteNote"></note-card>
+    <section class="card-list" v-if="notes">
+      <note-card v-for="note in notes"
+                 :title="note.title"
+                 :content="note.content"
+                 :label="note.label"
+                 @delete-action="deleteNote"></note-card>
     </section>
 
     <modal v-if="is_show_modal" :type="'from_bottom'" @close-modal="is_show_modal=false">
@@ -37,6 +41,7 @@
   export default {
     data() {
       return {
+        notes: null,
         is_show_modal: false
       }
     },
@@ -45,7 +50,15 @@
       'note-card': require('views/_components/note_card'),
       'modal': require('views/_components/modal')
     },
+    mounted: function () {
+      this.catchData();
+    },
     methods: {
+      catchData () {
+        window.axios.get('https://fir-3-test-2332e.firebaseio.com/notes.json').then(({data}) => {
+          this.notes = data;
+        });
+      },
       deleteNote () {
         this.is_show_modal = true;
       }

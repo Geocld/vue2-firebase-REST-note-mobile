@@ -1,13 +1,12 @@
 <template>
   <div class="note-card">
     <div class="title">
-      标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题
+      {{ title }}
       <span class="delete" @click.stop="$emit('delete-action')">删除</span>
     </div>
-    <div class="content">内容内容内容内容内容内容</div>
+    <div class="content">{{ content }}</div>
     <div class="label">
-      <span>标签1</span>
-      <span>标签2</span>
+      <span>{{ label }}</span>
     </div>
   </div>
 </template>
@@ -20,3 +19,9 @@
   .label { margin-top: 7px; font-size: 12px; color: #999; }
   .label > span { display: inline-block; padding: 0 5px; border-radius: 100px; text-align: center; border: 1px solid rgb(221, 221, 221); }
 </style>
+
+<script>
+  export default {
+    props: ['title', 'content', 'label']
+  }
+</script>
