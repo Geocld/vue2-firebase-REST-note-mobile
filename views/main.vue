@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view class="view" :is_logged="is_logged" :entry_url="entry_url"></router-view>
+    <router-view class="view"></router-view>
   </div>
 </template>
 
@@ -33,12 +33,6 @@
   import router from './_router';
 
   export default {
-    router,
-    data: function () {
-      return {
-        channel: null,
-        entry_url: window.location.href
-      };
-    }
+    router
   };
 </script>

@@ -14,13 +14,6 @@ export default new Router({
       component: function (resolve) {
         require(['../home/home.vue'], resolve)
       }
-    },
-    {
-      path: '/test',
-      name: 'test',
-      component: function (resolve) {
-        require(['../test/test.vue'], resolve)
-      }
     }
   ]
 });

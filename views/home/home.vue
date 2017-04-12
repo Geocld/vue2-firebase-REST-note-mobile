@@ -1,8 +1,8 @@
 <template>
   <section class="page-home">
     hello
-    <router-link :to="{ name: 'test' }">
+    <!-- <router-link :to="{ name: 'test' }">
         <span>test</span>
-    </router-link>
+    </router-link> -->
   </section>
 </template>
