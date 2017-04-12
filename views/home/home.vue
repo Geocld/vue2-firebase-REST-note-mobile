@@ -1,9 +1,6 @@
 <template>
   <section class="page-home">
     <page-header></page-header>
-    <!-- <router-link :to="{ name: 'test' }">
-        <span>test</span>
-    </router-link> -->
   </section>
 </template>
 
