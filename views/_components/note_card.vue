@@ -2,7 +2,7 @@
   <div class="note-card">
     <div class="title">
       标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题
-      <span class="delete">删除</span>
+      <span class="delete" @click.stop="$emit('delete-action')">删除</span>
     </div>
     <div class="content">内容内容内容内容内容内容</div>
     <div class="label">
