@@ -1,9 +1,10 @@
 <template>
   <section class="page-home">
-    <page-header :center_text="'Vue2'"></page-header>
+    <page-header :center_text="'Vue2'" :use_edit="true"></page-header>
 
     <section class="card-list" v-if="notes">
       <note-card v-for="note in notes"
+                 :is_show_deleted="false"
                  :title="note.title"
                  :content="note.content"
                  :label="note.label"

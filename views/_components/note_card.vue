@@ -2,10 +2,10 @@
   <div class="note-card">
     <div class="title">
       {{ title }}
-      <span class="delete" @click.stop="$emit('delete-action')">删除</span>
+      <span class="delete" v-if="is_show_deleted" @click.stop="$emit('delete-action')">删除</span>
     </div>
-    <div class="content">{{ content }}</div>
-    <div class="label">
+    <div class="content" v-if="content && content != ''">{{ content }}</div>
+    <div class="label" v-if="label && label != ''">
       <span>{{ label }}</span>
     </div>
   </div>
@@ -22,6 +22,6 @@
 
 <script>
   export default {
-    props: ['title', 'content', 'label']
+    props: ['is_show_deleted', 'title', 'content', 'label']
   }
 </script>
