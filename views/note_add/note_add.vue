@@ -9,11 +9,18 @@
     <text-field v-model="label" :type="'enum'" :enums="labels" :label_float="true" :label="'标签'"></text-field>
     <text-field v-model="content" :type="'textarea'":label_float="true" :label="'内容'" :placeholder="'请输入内容'"></text-field>
 
+    <toast :is_show="is_show_toast" @close-toast="is_show_toast = false">
+      <div class="toast-content">
+        <span>至少输入个标题吧~</span>
+      </div>
+    </toast>
+
   </section>
 </template>
 
 <style scoped>
   .page-note-add { min-height: 100vh; }
+  .toast-content > span { display: inline-block; padding: 5px 15px; border-radius: 50px; background: rgba(0, 0, 0, .2); color: #fff; }
 </style>
 
 <script>
@@ -21,6 +28,7 @@
     data () {
       return {
         is_data_loaded: false,
+        is_show_toast: false,
         labels: null,
         title: '',
         label: '',
@@ -38,6 +46,10 @@
     },
     methods: {
       saveNote: function () {
+        if (this.title === '') {
+          this.is_show_toast = true;
+          return
+        }
         this.is_data_loaded = false;
         window.axios.post('https://fir-3-test-2332e.firebaseio.com/notes.json', {
           'title': this.title,

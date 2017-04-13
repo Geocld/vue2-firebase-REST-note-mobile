@@ -9,4 +9,5 @@ new Vue(App).$mount('#app');
 
 // 公共组件
 Vue.component('spinner', require('./_components/spinner'));
+Vue.component('toast', require('./_components/toast'));
 Vue.component('page-header', require('./_components/page_header'));
