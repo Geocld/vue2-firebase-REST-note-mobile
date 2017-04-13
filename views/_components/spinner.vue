@@ -7,7 +7,7 @@
 </template>
 
 <style scoped>
-  .mask { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, .2); }
+  .mask { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, .2); z-index: 99999; }
   .mask .wrap { width: 100%; height: 100%; display: flex; align-items: center; }
   .loader, .loader:before, .loader:after { background: #ffffff; -webkit-animation: load1 1s infinite ease-in-out; animation: load1 1s infinite ease-in-out; width: 1em; height: 4em; }
   .loader { color: #ffffff; text-indent: -9999em; margin: 88px auto; position: relative; font-size: 11px; -webkit-transform: translateZ(0); -ms-transform: translateZ(0); transform: translateZ(0); -webkit-animation-delay: -0.16s; animation-delay: -0.16s; }
