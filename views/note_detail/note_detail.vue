@@ -1,8 +1,8 @@
 <template>
   <div class="page-note-detail">
     <spinner v-if="!is_data_loaded"></spinner>
-    <text-field :label_float="true" :label="'标题'" v-model="test"></text-field>
-    <text-field :type="'enum'" :enums="labels" :label_float="true" :label="'标签'"></text-field>
+    <text-field v-model="title" :label_float="true" :label="'标题'" :placeholder="'请输入标题'"></text-field>
+    <text-field v-model="label" :type="'enum'" :enums="labels" :label_float="true" :label="'标签'"></text-field>
   </div>
 </template>
 
@@ -17,7 +17,8 @@
         is_data_loaded: false,
         notes: null,
         labels: null,
-        test: ''
+        title: '',
+        label: ''
       }
     },
     components: {

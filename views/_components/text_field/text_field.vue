@@ -70,7 +70,7 @@
   .text-field .input-area { position: relative; height: 50px; border-bottom: 1px solid #eee; }
   .text-field.error .input-area { border-color: #f02f45; }
   .text-field .clear-all-btn { display: block; width: 18px; height: 18px; border-radius: 100%; background-color: #eee; color: #eee; position: absolute; z-index: 99; right: 10px; top: 50%; transform: translateY(-50%); }
-  .text-field .clear-all-btn > .x { font-size: 14px; background-color: transparent; position: absolute; z-index: 1; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 0; outline: none }
+  .text-field .clear-all-btn > .x { color: #333; font-size: 14px; background-color: transparent; position: absolute; z-index: 1; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 0; outline: none }
 </style>
 
 <script>
