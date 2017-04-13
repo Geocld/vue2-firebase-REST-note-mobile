@@ -1,9 +1,8 @@
 <template>
   <div class="page-header">
-    <div class="back" v-if="use_back">返回</div>
+    <div class="back" v-if="use_back" @click="$router.go(-1)">返回</div>
     <div class="center-content">{{ center_text }}</div>
-    <div class="save" v-if="use_save">保存</div>
-    <div class="save" v-if="use_edit">编辑</div>
+    <div class="save" v-if="use_save" @click="$emit('save')">保存</div>
   </div>
 </template>
 
@@ -18,8 +17,7 @@
     props: {
       center_text: { type: String, default: '' },
       use_back: { type: Boolean, default: false },
-      use_save: { type: Boolean, default: false },
-      use_edit: { type: Boolean, default: false }
+      use_save: { type: Boolean, default: false }
     }
   }
 </script>

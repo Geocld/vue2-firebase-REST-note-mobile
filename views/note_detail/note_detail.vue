@@ -1,6 +1,10 @@
 <template>
   <div class="page-note-detail">
+
     <spinner v-if="!is_data_loaded"></spinner>
+
+    <page-header :center_text="title" :use_back="true" :use_save="true"></page-header>
+
     <text-field v-model="title" :label_float="true" :label="'标题'" :placeholder="'请输入标题'"></text-field>
     <text-field v-model="label" :type="'enum'" :enums="labels" :label_float="true" :label="'标签'"></text-field>
     <text-field v-model="content" :type="'textarea'":label_float="true" :label="'内容'" :placeholder="'请输入内容'"></text-field>
@@ -8,7 +12,7 @@
 </template>
 
 <style scoped>
-  .page-note-detail { padding: 15px 0; min-height: 100vh; }
+  .page-note-detail { min-height: 100vh; }
 </style>
 
 <script>

@@ -52,7 +52,6 @@
       }
     },
     components: {
-      'page-header': require('views/_components/page_header'),
       'note-card': require('views/_components/note_card'),
       'modal': require('views/_components/modal')
     },
