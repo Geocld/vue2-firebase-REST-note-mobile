@@ -52,7 +52,7 @@
                       :is_correct="is_correct"></text-field-tip>
 
       <!-- 清空按钮 -->
-      <div v-if="type !== 'enum' && type !== 'date'"
+      <div v-if="type !== 'enum' && type !== 'date' && type !== 'textarea'"
            v-show="value && is_focus"
            class="clear-all-btn"
            @touchend="$emit('input', '')">

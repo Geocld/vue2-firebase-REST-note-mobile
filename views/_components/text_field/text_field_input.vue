@@ -1,5 +1,6 @@
 <template>
-  <input class="text-field-input"
+  <input v-if="type !== 'textarea'"
+         class="text-field-input"
          :class="[{ float }, type]"
          :type="type"
          :placeholder="placeholder"
@@ -11,6 +12,18 @@
          @keyup.enter="$emit('enter')"
          @input="$emit('input', $event.target.value)"
          @change="$emit('input', reformStr($event.target.value))">
+
+  <textarea v-else
+            class="text-field-text-area"
+            cols="30" rows="20"
+            :class="[{ float }, type]"
+            :placeholder="placeholder"
+            :value="value"
+            @focus="$emit('focus')"
+            @blur="$emit('blur')"
+            @keyup.enter="$emit('enter')"
+            @input="$emit('input', $event.target.value)"
+            @change="$emit('input', reformStr($event.target.value))"></textarea>
 </template>
 
 <style scoped>
@@ -18,6 +31,8 @@
   .text-field-input.date { line-height: 48px }
   /*fix: date类型无法垂直居中*/
   .text-field-input.float { padding-top: 22px; line-height: inherit; }
+  .text-field-text-area { padding: 2px 30px 2px 10px; display: block; width: 100%; min-height: 100px; resize: none; appearance: none; outline: none; border: none; border-radius: 0 0 0 0; box-shadow: none; }
+  .text-field-text-area.float { padding-top: 22px; line-height: inherit; }
 </style>
 
 <script>

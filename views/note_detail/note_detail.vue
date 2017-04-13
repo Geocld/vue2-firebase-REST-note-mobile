@@ -3,11 +3,12 @@
     <spinner v-if="!is_data_loaded"></spinner>
     <text-field v-model="title" :label_float="true" :label="'标题'" :placeholder="'请输入标题'"></text-field>
     <text-field v-model="label" :type="'enum'" :enums="labels" :label_float="true" :label="'标签'"></text-field>
+    <text-field v-model="content" :type="'textarea'":label_float="true" :label="'内容'" :placeholder="'请输入内容'"></text-field>
   </div>
 </template>
 
 <style scoped>
-  .page-note-detail { padding: 15px 0; min-height: 100vh; background: #f7f7f7; }
+  .page-note-detail { padding: 15px 0; min-height: 100vh; }
 </style>
 
 <script>
@@ -18,7 +19,8 @@
         notes: null,
         labels: null,
         title: '',
-        label: ''
+        label: '',
+        content: ''
       }
     },
     components: {
@@ -31,6 +33,11 @@
       ]).then(window.axios.spread((res_notes, res_labels) => {
         this.notes = res_notes.data;
         this.labels = res_labels.data;
+        this.title = this.notes.title;
+        this.label = this.labels.findIndex((value) => {
+          return value === this.notes.label;
+        });
+        this.content = this.notes.content;
         this.is_data_loaded = true;
       }));
     }
