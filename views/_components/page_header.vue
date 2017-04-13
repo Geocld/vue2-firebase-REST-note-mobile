@@ -9,7 +9,6 @@
 
 <style scoped>
   .page-header { display: flex; padding: 0 12px; height: 44px; line-height: 44px; background: #f7f7f8; border-bottom: 1px solid #e7e7e7; }
-  .back {  }
   .center-content { flex: 1; text-align: center; }
 </style>
 
