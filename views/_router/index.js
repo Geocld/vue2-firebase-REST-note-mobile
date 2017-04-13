@@ -12,7 +12,14 @@ export default new Router({
       path: '/',
       name: 'home',
       component: function (resolve) {
-        require(['../home/home.vue'], resolve)
+        require(['../home/home'], resolve)
+      }
+    },
+    {
+      path: '/note/:key',
+      name: 'note_detail',
+      component: function (resolve) {
+        require(['../note_detail/note_detail'], resolve)
       }
     }
   ]

@@ -1,14 +1,18 @@
 <template>
   <section class="page-home">
-    <page-header :center_text="'Vue2'" :use_edit="true"></page-header>
+
+    <spinner v-if="!is_data_loaded"></spinner>
+
+    <page-header :center_text="'test'" :use_edit="true"></page-header>
 
     <section class="card-list" v-if="notes">
-      <note-card v-for="note in notes"
+      <note-card v-for="(note, key) in notes"
                  :is_show_deleted="false"
                  :title="note.title"
                  :content="note.content"
                  :label="note.label"
-                 @delete-action="deleteNote"></note-card>
+                 @delete-action="is_show_modal = true"
+                 @click.native="$router.push({name: 'note_detail', params: { key: key }})"></note-card>
     </section>
 
     <modal v-if="is_show_modal" :type="'from_bottom'" @close-modal="is_show_modal=false">
@@ -42,6 +46,7 @@
   export default {
     data() {
       return {
+        is_data_loaded: false,
         notes: null,
         is_show_modal: false
       }
@@ -58,10 +63,8 @@
       catchData () {
         window.axios.get('https://fir-3-test-2332e.firebaseio.com/notes.json').then(({data}) => {
           this.notes = data;
+          this.is_data_loaded = true;
         });
-      },
-      deleteNote () {
-        this.is_show_modal = true;
       }
     }
   }
