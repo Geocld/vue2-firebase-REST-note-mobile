@@ -21,6 +21,13 @@ export default new Router({
       component: function (resolve) {
         require(['../note_detail/note_detail'], resolve)
       }
+    },
+    {
+      path: '/note_add',
+      name: 'note_add',
+      component: function (resolve) {
+        require(['../note_add/note_add'], resolve)
+      }
     }
   ]
 });

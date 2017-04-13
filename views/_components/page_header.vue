@@ -3,6 +3,7 @@
     <div class="back" v-if="use_back" @click="$router.go(-1)">返回</div>
     <div class="center-content">{{ center_text }}</div>
     <div class="save" v-if="use_save" @click="$emit('save')">保存</div>
+    <div class="save" v-if="use_add" @click="$emit('add')">添加</div>
   </div>
 </template>
 
@@ -17,7 +18,8 @@
     props: {
       center_text: { type: String, default: '' },
       use_back: { type: Boolean, default: false },
-      use_save: { type: Boolean, default: false }
+      use_save: { type: Boolean, default: false },
+      use_add: { type: Boolean, default: false }
     }
   }
 </script>

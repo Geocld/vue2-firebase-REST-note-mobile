@@ -3,7 +3,7 @@
 
     <spinner v-if="!is_data_loaded"></spinner>
 
-    <page-header :center_text="'test'" :use_edit="true"></page-header>
+    <page-header :center_text="'test'" :use_add="true" @add="$router.push({name: 'note_add'})"></page-header>
 
     <section class="card-list" v-if="notes">
       <note-card v-for="(note, key) in notes"
