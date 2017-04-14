@@ -6,7 +6,7 @@
     <page-header :center_text="title" :use_back="true" :use_save="true" @save="saveNote"></page-header>
 
     <text-field v-model="title" :label_float="true" :label="'标题'" :placeholder="'请输入标题'"></text-field>
-    <text-field v-model="label" :type="'enum'" :enums="labels" :label_float="true" :label="'标签'"></text-field>
+    <text-field v-model="label" :type="'enum'" :enums="labels" :label_float="true" :label="'标签'" @input="changeSelect"></text-field>
     <text-field v-model="content" :type="'textarea'":label_float="true" :label="'内容'" :placeholder="'请输入内容'"></text-field>
 
     <toast :is_show="is_show_toast" @close-toast="is_show_toast = false">
@@ -46,6 +46,7 @@
       ]).then(window.axios.spread((res_notes, res_labels) => {
         this.notes = res_notes.data;
         this.labels = res_labels.data;
+        this.labels.push('+添加新标签')
         this.title = this.notes.title;
         this.label = this.labels.findIndex((value) => {
           return value === this.notes.label;
@@ -77,6 +78,11 @@
       getNowTime () {
         let now = new Date().getTime();
         return now
+      },
+      changeSelect (val) {
+        if (this.labels && +val === this.labels.length - 1) {
+          this.$router.push({name: 'label_add'});
+        }
       }
     }
   }

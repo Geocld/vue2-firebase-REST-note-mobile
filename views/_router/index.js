@@ -28,6 +28,13 @@ export default new Router({
       component: function (resolve) {
         require(['../note_add/note_add'], resolve)
       }
+    },
+    {
+      path: '/label_add',
+      name: 'label_add',
+      component: function (resolve) {
+        require(['../label_add/label_add'], resolve)
+      }
     }
   ]
 });
