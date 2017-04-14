@@ -6,13 +6,13 @@
     <page-header :center_text="'Vue2'" :use_add="true" @add="$router.push({name: 'note_add'})"></page-header>
 
     <section class="card-list" v-if="notes">
-      <note-card v-for="(note, key) in notes"
+      <note-card v-for="(note, key) in sortedtNodes"
                  :is_show_deleted="true"
                  :title="note.title"
                  :content="note.content"
                  :label="note.label"
                  @delete-action="is_show_modal = true, cur_note_key = key"
-                 @click.native="$router.push({name: 'note_detail', params: { key: key }})"></note-card>
+                 @click.native="$router.push({name: 'note_detail', params: { key: note.key }})"></note-card>
     </section>
 
     <modal v-if="is_show_modal" :type="'from_bottom'" @close-modal="is_show_modal=false">
@@ -56,6 +56,22 @@
     components: {
       'note-card': require('views/_components/note_card'),
       'modal': require('views/_components/modal')
+    },
+    computed: {
+      sortedtNodes: function () {
+        var notes = [];
+        if (!this.notes) {
+          return notes;
+        }
+        for (var key in this.notes) {
+          this.notes[key].key = key;
+          notes.push(this.notes[key]);
+        }
+        notes.sort((a, b) => {
+          return a.time - b.time < 0
+        });
+        return notes
+      }
     },
     mounted: function () {
       this.catchData();

@@ -51,14 +51,20 @@
           return
         }
         this.is_data_loaded = false;
+        let now = this.getNowTime();
         window.axios.post('https://fir-3-test-2332e.firebaseio.com/notes.json', {
           'title': this.title,
           'label': this.labels[this.label],
-          'content': this.content
+          'content': this.content,
+          'now': now
         }).then(res => {
           this.is_data_loaded = true;
           this.$router.go(-1);
         });
+      },
+      getNowTime () {
+        let now = new Date().getTime();
+        return now
       }
     }
   }
